@@ -1,4 +1,10 @@
 #Requires Python3
+'''
+TODO:
+1. Add Error Handling
+2. Menu for single URL or URLs from a file
+'''
+
 
 import socket
 import os
