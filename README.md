@@ -1,2 +1,4 @@
 # PythonIntel
-Intel based python projects
+Python projects for intel gathering.
+
+Note: This is a WIP
