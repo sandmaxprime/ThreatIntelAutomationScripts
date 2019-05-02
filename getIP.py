@@ -1,16 +1,21 @@
 #Requires Python3
 '''
-TODO:
-1. Add Error Handling
-2. Menu for single URL or URLs from a file
+Created by Lionel Faleiro
+
+2-May-2019
+Added Error Handling
+Added Copy to Clipboard functionality
+
 '''
 
 
 import socket
 import os
+import pyperclip
 
 filename = 'urllist.txt'
 filenameo = 'extractedips.txt'
+finalop = ''
 
 #Checks if the OP File exists and recreates
 if os.path.exists(filenameo):
@@ -38,10 +43,17 @@ for line in fname:
         domain = urltoken[2].split('www.')
         domain = domain[1]
     print('Domain Name: ',domain)
-    iptuple = socket.gethostbyname_ex(domain)
-    #iptuple is a tuple where [2] is a list of ips
-    for i in iptuple[2]:
-        print(i)
-        fout.write(i + '\n')
+    try:
+        iptuple = socket.gethostbyname_ex(domain)
+        #iptuple is a tuple where [2] is a list of ips
+        for i in iptuple[2]:
+            print(i)
+            finalop = finalop + '\n' + i
+            fout.write(i + '\n')
+    except:
+        print('Can not fetch IP for ',domain)
+    
 fname.close()
 fout.close()
+
+pyperclip.copy(finalop)
