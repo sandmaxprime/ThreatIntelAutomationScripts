@@ -1,32 +1,15 @@
 #Requires Python3
 '''
 Created by Lionel Faleiro
-
-2-May-2019
-Added Error Handling
-Added Copy to Clipboard functionality
-
 '''
-
-
 import socket
 import os
 import pyperclip
 
 filename = 'urllist.txt'
-filenameo = 'extractedips.txt'
 finalop = ''
 
-#Checks if the OP File exists and recreates
-if os.path.exists(filenameo):
-    print('Recreating OP File')
-    os.remove(filenameo)
-
 fname = open(filename)
-
-#Extracted IPs will be appended to this file
-fout = open(filenameo,'a')
-
 #Iterates over the input url list
 for line in fname:
     # Strips trailing whitespaces
@@ -49,11 +32,9 @@ for line in fname:
         for i in iptuple[2]:
             print(i)
             finalop = finalop + '\n' + i
-            fout.write(i + '\n')
     except:
         print('Can not fetch IP for ',domain)
     
 fname.close()
-fout.close()
-
 pyperclip.copy(finalop)
+print('IPs copied to clipboard')
