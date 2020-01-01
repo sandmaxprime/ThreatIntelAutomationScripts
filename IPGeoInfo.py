@@ -1,4 +1,4 @@
-#Requires Pytho3
+#Requires Python3
 '''
 Created by Lionel Faleiro
 '''
