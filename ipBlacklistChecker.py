@@ -34,7 +34,6 @@ for line in fname:
         fop.close()
     except Exception as e:
         print(e)
-        print("IPVoid not responding!!!:(")
         print(f"No response for {wIP}")
 fname.close()
 fop.close()
